@@ -55,6 +55,8 @@ su: cannot open session: Permission denied
 Enabling `loader.log_level = "all"` in the manifest, I update this debug information as `debug_output.md` to my github:<https://github.com/wydxyreh/Ubuntu_gramine-rbmq.git>.
 I have `root` access, and I also changed the access of `/var/lib/rabbitmq` by `sudo chmod 777 /var/lib/rabbitmq`. But I still got this problem.
 
+
+
 On `Borys Popławski @boryspoplawski`'s advice, I use `id wydx` to get my UID and GID:`uid=992(wydx) gid=991(wydx) groups=991(wydx),27(sudo)`
 And I changed initial uid/gid via modifing manifest to:
 ```
@@ -70,23 +72,23 @@ Crash dump is being written to: erl_crash.dump...done
 
 Only root or rabbitmq can run rabbitmq-server
 ```
+Enabling `loader.log_level = "all"` in the manifest, I update this debug information as `ubuntu_debug_1.md` to my github:<https://github.com/wydxyreh/Ubuntu_gramine-rbmq.git>.
 In my perspective, I have `root` access, so `Only root or rabbitmq can run rabbitmq-server` makes me very confused.
-But, when I run `scripts/test.py` directly in my terminal with `python3 scripts/test.py`. I will get some error information like:
+
+But, when I run `scripts/test.py` directly in my terminal with `python3 scripts/test.py`. I used to got some error information like:
 ```
 Crash dump is being written to: erl_crash.dump...
 Only root or rabbitmq can run rabbitmq-server
 ```
-Enabling `loader.log_level = "all"` in the manifest, I update this debug information as `ubuntu_debug_1.md` to my github:<https://github.com/wydxyreh/Ubuntu_gramine-rbmq.git>.
 But I can run `scripts/test.py` with `sudo python3 scripts/test.py` successfully. That inspired me.
-So I try `gramine-direct ./python scripts/test.py`, but failed with the same error information.
-
-I try to change `scripts/test.py`:
+So I try `gramine-direct ./python scripts/test.py`, but failed with the same error information.I try to change `scripts/test.py`:
 ```
 #!/usr/bin/env python3
 import subprocess
 completed = subprocess.run(['sudo','rabbitmq-server'])
 ```
-I can run `scripts/test.py` with `python3 scripts/test.py` successfully now. But when I try it in `Gramine`, I get new problem:
+I can run `scripts/test.py` with `python3 scripts/test.py` successfully now. 
+But when I try it in `Gramine`, I get new problem:
 ```
 sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the 'nosuid' option set or an NFS file system without root privileges?
 ```
