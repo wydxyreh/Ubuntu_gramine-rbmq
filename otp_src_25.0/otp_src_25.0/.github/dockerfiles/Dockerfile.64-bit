@@ -1,0 +1,24 @@
+ARG BASE=docker.pkg.github.com/erlang/otp/ubuntu-base
+FROM $BASE
+
+ARG MAKEFLAGS=-j4
+ENV MAKEFLAGS=$MAKEFLAGS \
+    ERLC_USE_SERVER=yes \
+    ERL_TOP=/buildroot/otp \
+    PATH=/otp/bin:/buildroot/otp/bin:$PATH
+
+ARG ARCHIVE=./otp.tar.gz
+COPY $ARCHIVE /buildroot/otp.tar.gz
+RUN cd /buildroot && tar -xzf ./otp.tar.gz
+
+WORKDIR /buildroot/otp/
+
+ENV CFLAGS="-O2 -g -Werror"
+
+## Configure, check that no application are disabled and then make
+RUN  ./configure --prefix=/otp && \
+        if cat lib/*/CONF_INFO || cat lib/*/SKIP || cat lib/SKIP-APPLICATIONS; then exit 1; fi && \
+        make && sudo make install
+
+## Disable -Werror as testcases do not compile with it on
+ENV CFLAGS="-O2 -g"

@@ -1,0 +1,417 @@
+<module name="ct">
+<type>
+  <name>config_key</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-config_key">config_key()</marker> = <seetype marker="erlang#atom">atom()</seetype></typehead></typedecl>
+</type>
+<type>
+  <name>conn_log_mod</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-conn_log_mod">conn_log_mod()</marker> = ct_netconfc | ct_telnet</typehead></typedecl>
+</type>
+<type>
+  <name>conn_log_option</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-conn_log_option">conn_log_option()</marker> = <br/><nbsp/><nbsp/><nbsp/><nbsp/>{log_type, <seetype marker="#conn_log_type">conn_log_type()</seetype>} | {hosts, [<seetype marker="#key_or_name">key_or_name()</seetype>]}</typehead></typedecl>
+</type>
+<type>
+  <name>conn_log_options</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-conn_log_options">conn_log_options()</marker> = [<seetype marker="#conn_log_option">conn_log_option()</seetype>]</typehead></typedecl>
+</type>
+<type>
+  <name>conn_log_type</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-conn_log_type">conn_log_type()</marker> = raw | pretty | html | silent</typehead></typedecl>
+</type>
+<type>
+  <name>key_or_name</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-key_or_name">key_or_name()</marker> = <seetype marker="#config_key">config_key()</seetype> | <seetype marker="#target_name">target_name()</seetype></typehead></typedecl>
+</type>
+<type>
+  <name>target_name</name>
+  <n_vars>0</n_vars>
+  <typedecl>
+      <typehead><marker id="type-target_name">target_name()</marker> = <seetype marker="erlang#atom">atom()</seetype></typehead></typedecl>
+</type>
+<spec>
+  <name>abort_current_testcase</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>add_config</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>break</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>break</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>capture_get</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>capture_get</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>capture_start</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>capture_stop</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>comment</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>comment</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>continue</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>continue</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>decrypt_config_file</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>decrypt_config_file</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>encrypt_config_file</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>encrypt_config_file</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>escape_chars</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>escape_chars</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>fail</name>
+  <arity>1</arity>
+  <contract>
+    <clause>
+      <head>fail(Reason :: <seetype marker="erlang#term">term()</seetype>) -&gt; <seetype marker="erlang#no_return">no_return()</seetype></head></clause>
+  </contract>
+  <anno>Reason</anno>
+</spec>
+<spec>
+  <name>fail</name>
+  <arity>2</arity>
+  <contract>
+    <clause>
+      <head>fail(Format :: <seetype marker="io#format">io:format()</seetype>, Args :: [<seetype marker="erlang#term">term()</seetype>]) -&gt; <seetype marker="erlang#no_return">no_return()</seetype></head></clause>
+  </contract>
+  <anno>Args</anno>
+  <anno>Format</anno>
+</spec>
+<spec>
+  <name>get_config</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_config</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_config</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_event_mgr_ref</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_progname</name>
+  <arity>0</arity>
+  <contract>
+    <clause>
+      <head>get_progname() -&gt; <seetype marker="erlang#string">string()</seetype></head></clause>
+  </contract>
+</spec>
+<spec>
+  <name>get_status</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_target_name</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_testspec_terms</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_testspec_terms</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_timetrap_info</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>get_verbosity</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>install</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>listenv</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>log</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>log</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>log</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>log</name>
+  <arity>4</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>log</name>
+  <arity>5</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>make_priv_dir</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>notify</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>pal</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>pal</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>pal</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>pal</name>
+  <arity>4</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>pal</name>
+  <arity>5</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>parse_table</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>print</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>print</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>print</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>print</name>
+  <arity>4</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>print</name>
+  <arity>5</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>reload_config</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>remaining_test_procs</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>remove_config</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>require</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>require</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>run</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>run</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>run</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>run_test</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>run_testspec</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>set_verbosity</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>sleep</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>start_interactive</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>step</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>step</name>
+  <arity>4</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>stop_interactive</name>
+  <arity>0</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>sync_notify</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>testcases</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>timetrap</name>
+  <arity>1</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>userdata</name>
+  <arity>2</arity>
+  <contract/>
+</spec>
+<spec>
+  <name>userdata</name>
+  <arity>3</arity>
+  <contract/>
+</spec>
+<timestamp>Generated by EDoc, May 17 2022, 21:43:50.</timestamp>
+</module>
