@@ -104,4 +104,40 @@ sudo: unable to initialize policy plugin
 ```
 Enabling `loader.log_level = "all"` in the manifest, I update this debug information as `ubuntu_debug_2.md` to my github:<https://github.com/wydxyreh/Ubuntu_gramine-rbmq.git>.
 
+To avoid repetition and wordy, I upload detailed description of my problem on github:<https://github.com/wydxyreh/Ubuntu_gramine-rbmq.git>.
 Now I have no idea how to solve this problem, can you help me?
+
+
+
+About the error information of:
+```
+Failed to write to erl_child_setup: 38
+
+Crash dump is being written to: erl_crash.dump...done
+```
+It confused me a long time.I tried to search the bug in RabbitMQ, but didn't find ant problem.
+When I search this problem in erl, I find that `erl_child_setup:38` in `otp_src_25.0/erts/emulator/sys/unix/sys_drivers.c`:
+```
+if (errno == ERRNO_BLOCK || errno == EINTR) {
+    return;
+} else if (errno == EMFILE) {
+    forker_sigchld(proto->u.start.port_id, errno);
+    if (forker_deq(port_num, proto) == 0)
+        driver_select(port_num, forker_fd, ERL_DRV_WRITE, 0);
+    return;
+} else {
+    erts_exit(ERTS_DUMP_EXIT, "Failed to write to erl_child_setup: %d\n", errno);
+}
+```
+I tried to locate `EINTR` and `EMFILE`, and find `EINTR` and `EMFILE` in `mingw64/x86_64-w64-mingw32/include/errno.h`, which were defined as specific numbers.
+```
+#define EINTR 4
+#define EMFILE 24
+```
+I tried to locate `ERRNO_BLOCK` as well, and find it in `otp_src_25.0/erts/emulator/beam/sys.h`. After all, I speculate that the number `38` in `erl_child_setup: 38` has a certain connection with `mingw64/x86_64-w64-mingw32/include/errno.h`.
+
+I post this question at `erlang/otp` on github, and I got a reply:<https://github.com/erlang/otp/issues/6422>
+```
+When googling "errno 38 Gramine" the results seem to indicate that it is an "Function not implemented" error. The error is the result of a call to sendmsg() on a unix domain socket. It seems that that operation is not supported on Gramine, but I have no experience with Gramine what so ever.
+```
+I think maybe this question comes back to Gramine. I read about the docs, but I still don't know how to solve it.
