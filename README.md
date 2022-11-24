@@ -37,6 +37,6 @@ Mine is:
 erlang V13.0.4, Erlang/OTP 25
 Rabbitmq v3.11.0
 
-Now I konw RabbitMQ and Gramine do not match, beacuse RabbitMQ tries to use some data on unix socket, which is not supported in Gramine.
+Now I konw `RabbitMQ v3.11.0` and `Gramine v1.3.1` do not match, beacuse RabbitMQ tries to use some data on unix socket, which is not supported in Gramine.
 But Gramine team will build all the blocks in the future.
 Information updated at 2022/11/23.
